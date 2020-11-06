@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/PRG/Heig-VD_Labo/bissextiles.h
+
+E:/PRG/Heig-VD_Labo/main.cpp
+cstdlib
+-
+iostream
+-
+bissextiles.h
+E:/PRG/Heig-VD_Labo/bissextiles.h
+

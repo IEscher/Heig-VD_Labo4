@@ -17,7 +17,5 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 using namespace std;
 
 int main() {
-   //test
-   cout << "Helloooooo";
    return EXIT_SUCCESS;
 }
