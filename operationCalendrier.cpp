@@ -1,3 +1,8 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
 bool testBissextile(unsigned int annee) {
    if (annee % 400 == 0 || (annee % 4 == 0 && annee % 100 != 0)) {
       return true;
@@ -77,4 +82,77 @@ unsigned int calculDeltaJours(unsigned int moisDebut, unsigned int anneeDebut,
    } // Si les deux mois correspondent, aucun calcul n'est nécessaire
 
    return deltaJours;
+}
+
+void afficherMois(unsigned int mois, unsigned int annee) {
+   // La date de référence ci-dessous doit correspondre obligatoirement à Lundi
+   const unsigned int moisReference = 1;
+   const unsigned int anneeReference = 1900;
+
+   unsigned int jourSurLaSemaine =
+      calculDeltaJours(moisReference, anneeReference, mois, annee) % 7 + 1;
+   // 1 = Lundi, 2 = Mardi, etc...
+
+   string nomMois;
+   switch (mois) {
+      case 1:
+         nomMois = "Janvier";
+         break;
+      case 2:
+         nomMois = "Fevrier";
+         break;
+      case 3:
+         nomMois = "Mars";
+         break;
+      case 4:
+         nomMois = "Avril";
+         break;
+      case 5:
+         nomMois = "May";
+         break;
+      case 6:
+         nomMois = "Juin";
+         break;
+      case 7:
+         nomMois = "Juillet";
+         break;
+      case 8:
+         nomMois = "Aout";
+         break;
+      case 9:
+         nomMois = "Septembre";
+         break;
+      case 10:
+         nomMois = "Octobre";
+         break;
+      case 11:
+         nomMois = "Novembre";
+         break;
+      case 12:
+         nomMois = "Decembre";
+         break;
+      default:
+         break;
+   }
+
+   cout << nomMois << " " << annee << endl;
+   cout << endl;
+   cout << " L  M  M  J  V  S  D" << endl;
+
+   unsigned int jourDuMois = 1;
+   cout << setw(jourSurLaSemaine * 3 - 1); // décalage du premier jour sur le
+   // calendrier
+
+   while (jourDuMois <= nbJoursMois(mois, annee)) {
+      cout << jourDuMois;
+      jourDuMois++;
+      if (jourSurLaSemaine == 7) {
+         jourSurLaSemaine = 1;
+         cout << endl;
+         cout << setw(2); // 2 sdfncbiswdevi
+      } else {
+         jourSurLaSemaine++;
+         cout << setw(3);
+      }
+   }
 }
