@@ -1,4 +1,4 @@
-bool testBissextile(unsigned short annee) {
+bool testBissextile(unsigned int annee) {
    if (annee % 400 == 0 || (annee % 4 == 0 && annee % 100 != 0)) {
       return true;
    } else { // non divisible par 400 ou non divisible par 4
@@ -6,12 +6,12 @@ bool testBissextile(unsigned short annee) {
    }
 }
 
-unsigned short nbJoursMois(unsigned short mois, unsigned short annee) {
+unsigned int nbJoursMois(unsigned int mois, unsigned int annee) {
    // Constantes définissant les différentes possibilités de jours dans un mois
-   const unsigned short MOIS_LONG = 31;
-   const unsigned short MOIS_COURT = 30;
-   const unsigned short MOIS_BISSEXTILE = 29;
-   const unsigned short MOIS_NON_BISSEXTILE = 28;
+   const unsigned int MOIS_LONG = 31;
+   const unsigned int MOIS_COURT = 30;
+   const unsigned int MOIS_BISSEXTILE = 29;
+   const unsigned int MOIS_NON_BISSEXTILE = 28;
 
    enum numMois {
       JANVIER = 1, FEVRIER, MARS, AVRIL, MAI, JUIN, JUILLET, AOUT, SEPTEMBRE,
@@ -43,3 +43,38 @@ unsigned short nbJoursMois(unsigned short mois, unsigned short annee) {
    }
 }
 
+unsigned int calculDeltaJours(unsigned int moisDebut, unsigned int anneeDebut,
+                              unsigned int moisFin, unsigned int anneeFin) {
+
+   unsigned int deltaJours = 0;  // Nombre de jours entre la première date et la
+   // deuxième
+
+   for (unsigned int deltaAnnee = 0;
+        deltaAnnee < anneeFin - anneeDebut; deltaAnnee++) {
+      if (testBissextile(anneeDebut + deltaAnnee)) {
+         deltaJours += 1;
+      }
+      deltaJours += 365;
+   }
+
+   if (moisFin - moisDebut < 0) { // Quand le mois de début est plus tard que le
+      // mois de fin
+      unsigned int moisCalcul = moisDebut - 1;
+      while (moisCalcul >= moisFin) {
+         // Il faut enlever les jours qui ont été ajoutés en trop pour le nombre
+         // d'années séparant les deux dates
+         deltaJours = deltaJours - nbJoursMois(moisCalcul, anneeFin);
+         moisCalcul--;
+      }
+   } else if (moisFin - moisDebut > 0) { // Quand le mois de début est plus tôt que
+      // le mois de fin
+      unsigned int moisCalcul = moisDebut;
+      while (moisCalcul < moisFin) {
+         // Il faut ajouter le nombre de jour séparant les deux dates
+         deltaJours = deltaJours + nbJoursMois(moisCalcul, anneeFin);
+         moisCalcul++;
+      }
+   } // Si les deux mois correspondent, aucun calcul n'est nécessaire
+
+   return deltaJours;
+}

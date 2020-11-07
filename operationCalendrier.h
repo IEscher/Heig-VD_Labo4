@@ -1,8 +1,11 @@
 #ifndef OPERATIONCALENDRIER_H
 #define OPERATIONCALENDRIER_H
 
-bool testBissextile(unsigned short annee);
+bool testBissextile(unsigned int annee);
 
-unsigned short nbJoursMois(unsigned short mois, unsigned short annee);
+unsigned int nbJoursMois(unsigned int mois, unsigned int annee);
+
+unsigned int calculDeltaJours(unsigned int moisDebut, unsigned int anneeDebut,
+                              unsigned int moisFin, unsigned int anneeFin);
 
 #endif //OPERATIONCALENDRIER_H
