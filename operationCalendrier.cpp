@@ -97,35 +97,35 @@ unsigned int calculDeltaJours(unsigned int moisDebut, unsigned int anneeDebut,
    }
 
    if (moisFin - moisDebut < 0) { // Quand le mois de début est plus tard que le
-      // mois de fin
+      // mois de fin.
       unsigned int moisCalcul = moisDebut - 1;
       while (moisCalcul >= moisFin) {
          // Il faut enlever les jours qui ont été ajoutés en trop pour le nombre
-         // d'années séparant les deux dates
+         // d'années séparant les deux dates.
          deltaJours = deltaJours - nbJoursMois(moisCalcul, anneeFin);
          moisCalcul--;
       }
    } else if (moisFin - moisDebut > 0) { // Quand le mois de début est plus tôt que
-      // le mois de fin
+      // le mois de fin.
       unsigned int moisCalcul = moisDebut;
       while (moisCalcul < moisFin) {
-         // Il faut ajouter le nombre de jour séparant les deux dates
+         // Il faut ajouter le nombre de jour séparant les deux dates.
          deltaJours = deltaJours + nbJoursMois(moisCalcul, anneeFin);
          moisCalcul++;
       }
-   } // Si les deux mois correspondent, aucun calcul n'est nécessaire
+   } // Si les deux mois correspondent, aucun calcul n'est nécessaire.
 
    return deltaJours;
 }
 
 void afficherMois(unsigned int mois, unsigned int annee) {
-   // La date de référence ci-dessous doit correspondre obligatoirement à Lundi
-   const unsigned int moisReference = 1;
-   const unsigned int anneeReference = 1900;
+   // La date de référence ci-dessous doit correspondre obligatoirement à Lundi.
+   const unsigned int MOIS_DE_REFERENCE = 1;
+   const unsigned int ANNEE_DE_REFERENCE = 1900;
 
    unsigned int jourSurLaSemaine =
-      calculDeltaJours(moisReference, anneeReference, mois, annee) % 7 + 1;
-   // 1 = Lundi, 2 = Mardi, etc...
+      calculDeltaJours(MOIS_DE_REFERENCE, ANNEE_DE_REFERENCE, mois, annee) % 7 + 1;
+   // 1 = lundi, 2 = mardi, etc...
 
    string nomMois;
    switch (mois) {
@@ -169,26 +169,28 @@ void afficherMois(unsigned int mois, unsigned int annee) {
          break;
    }
 
-   // affichage de l'entête
+   // Affichage de l'entête
+   cout << endl;
    cout << nomMois << " " << annee << endl;
    cout << endl;
    cout << " L  M  M  J  V  S  D" << endl;
 
    unsigned int jourDuMois = 1;
-   cout << setw((int)(jourSurLaSemaine * 3 - 1)); // décalage du premier jour sur
+   cout << setw((int)(jourSurLaSemaine * 3 - 1)); // Décalage du premier jour sur
    // le calendrier
 
+   // Affichage de tous les jours du mois
    while (jourDuMois <= nbJoursMois(mois, annee)) {
       cout << jourDuMois;
       jourDuMois++;
-      if (jourSurLaSemaine == 7) {
+      if (jourSurLaSemaine == 7) { // Si un lundi
          jourSurLaSemaine = 1;
          cout << endl;
-         cout << setw(2); // 2 sdfncbiswdevi
+         cout << setw(2); // Décalage pour avoir un aspect de calendrier
       } else {
          jourSurLaSemaine++;
-         cout << setw(3);
+         cout << setw(3); // Décalage pour avoir un aspect de calendrier
       }
    }
-   cout << endl << endl;
+   cout << endl;
 }

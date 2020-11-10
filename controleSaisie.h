@@ -18,6 +18,17 @@ using namespace std;
 #ifndef HEIG_VD_LABO4_CONTROLESAISIE_H
 #define HEIG_VD_LABO4_CONTROLESAISIE_H
 
+/**
+ *
+ * @param VALEUR1_MIN
+ * @param VALEUR1_MAX
+ * @param VALEUR2_MIN
+ * @param VALEUR2_MAX
+ * @param valeur1
+ * @param valeur2
+ * @param messageEntree
+ * @param messageErreur
+ */
 void controleSaisie(unsigned int VALEUR1_MIN, unsigned int VALEUR1_MAX,
                     unsigned int VALEUR2_MIN, unsigned int VALEUR2_MAX,
                     unsigned int *valeur1, unsigned int *valeur2,
