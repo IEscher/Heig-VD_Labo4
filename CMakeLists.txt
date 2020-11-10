@@ -3,4 +3,5 @@ project(Labo3)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Labo3 main.cpp operationCalendrier.cpp operationCalendrier.h)
+add_executable(Labo3 main.cpp operationCalendrier.cpp operationCalendrier.h
+        controleSaisie.cpp controleSaisie.h)
