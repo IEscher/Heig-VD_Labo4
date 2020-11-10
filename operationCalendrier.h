@@ -18,8 +18,8 @@ unsigned int nbJoursMois(unsigned int mois, unsigned int annee);
 
 /**
  * @brief               Retourne le nombre de jours entre deux dates, ces dernières
- *                      précisées par leur mois et par leur année. La deuxième
- *                      date doit être plus tard que la première.
+ *                      précisées par leur mois et par leur année. Si la deuxième
+ *                      date est plus tôt que la première, les dates sont inversées.
  * @param moisDebut     le mois de la première date
  * @param anneeDebut    l'année de la première date
  * @param moisFin       le mois de la dernère date
