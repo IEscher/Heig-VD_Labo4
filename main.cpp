@@ -2,11 +2,16 @@
 -----------------------------------------------------------------------------------
 Nom du fichier  : main.cpp
 Auteur(s)       : Crotti Pablo, Escher Ian, Rosat Cédric
-Date creation   : 06.11.2020
+Date creation   : 05.11.2020
 
-Description     : Fichier principal du programme Labo3
+Description     : Ce programme demande à l'utilisateur de saisir deux dates et
+                  affiche l'ensemble des pages calendrier correspondant à
+                  l'intervalle entre les deux dates. Une fois l'affichage terminé,
+                  le programme demande à l'utilisateur si il veut afficher un autre
+                  calendrier ou quitter le programme.
 
-Remarque(s)     : <à compléter>
+Remarque(s)     : Les dates autorisées sont comprises entre janvier 1900 et
+                  décembre 2020. Les saisies de l'utilisateur sont contrôlées.
 
 Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
@@ -74,7 +79,7 @@ int main() {
             programmeActif = true;
             saisieOk = true;
          }
-         if(!saisieOk){
+         if (!saisieOk) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Saisie incorrecte" << endl;
