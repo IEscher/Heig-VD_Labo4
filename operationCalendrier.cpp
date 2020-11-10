@@ -96,8 +96,8 @@ unsigned int calculDeltaJours(unsigned int moisDebut, unsigned int anneeDebut,
       deltaJours += 365;
    }
 
-   if (moisFin - moisDebut < 0) { // Quand le mois de début est plus tard que le
-      // mois de fin.
+   if (moisFin < moisDebut) { // Quand le mois de début est plus tard
+      // que le mois de fin.
       unsigned int moisCalcul = moisDebut - 1;
       while (moisCalcul >= moisFin) {
          // Il faut enlever les jours qui ont été ajoutés en trop pour le nombre
