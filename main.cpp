@@ -19,56 +19,70 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 using namespace std;
 
 int main() {
-    const unsigned int MOIS_MIN = 1, MOIS_MAX = 12;
-    const unsigned int ANNEE_MIN = 1900, ANNEE_MAX = 2100;
+   const unsigned int MOIS_MIN = 1, MOIS_MAX = 12;
+   const unsigned int ANNEE_MIN = 1900, ANNEE_MAX = 2100;
 
-    bool programmeActif;
-    do {
-        bool saisieDate;
-        unsigned int moisDebut, anneeDebut, moisFin, anneeFin;
-        do {
-            string messageErreur = "Date non valide. Veuillez SVP recommencer.";
-            string messageEntree = "Veuillez entrer la date de debut [mm aaaa] :";
-            controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX, &moisDebut,
-                           &anneeDebut, messageEntree, messageErreur);
-            messageEntree = "Veuillez entrer la date de fin [mm aaaa] :";
-            controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX, &moisFin,
-                           &anneeFin, messageEntree, messageErreur);
+   bool programmeActif;
+   do {
+      bool saisieDate;
+      unsigned int moisDebut, anneeDebut, moisFin, anneeFin;
+      do {
+         string messageErreur = "Date non valide. Veuillez SVP recommencer.";
+         string messageEntree = "Veuillez entrer la date de debut [mm aaaa] :";
+         controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX, &moisDebut,
+                        &anneeDebut, messageEntree, messageErreur);
+         messageEntree = "Veuillez entrer la date de fin [mm aaaa] :";
+         controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX, &moisFin,
+                        &anneeFin, messageEntree, messageErreur);
 
-            // Contrôle la cohérence des dates
-            if (anneeDebut > anneeFin) {
-                saisieDate = false;
-            } else if (anneeDebut == anneeFin) {
-                saisieDate = (moisDebut < moisFin);
-            } else {
-                saisieDate = true;
+         // Contrôle la cohérence des dates
+         if (anneeDebut > anneeFin) {
+            saisieDate = false;
+         } else if (anneeDebut == anneeFin) {
+            saisieDate = (moisDebut <= moisFin);
+         } else {
+            saisieDate = true;
+         }
+
+         if (!saisieDate) {
+            cout << "Veuillez entrer une date de debut < que la date de fin."
+                 << endl;
+         }
+      } while (!saisieDate);
+
+      for (; anneeDebut <= anneeFin; anneeDebut++) {
+         if (anneeDebut != anneeFin) {
+            for (; moisDebut <= MOIS_MAX; moisDebut++) {
+               afficherMois(moisDebut, anneeDebut);
             }
-
-            if (!saisieDate) {
-                cout << "Veuillez entrer une date de debut < que la date de fin."
-                     << endl;
+         } else {// l'annee est égale à la date de fin
+            for (; moisDebut <= moisFin; moisDebut++) {
+               afficherMois(moisDebut, anneeDebut);
             }
-        } while (!saisieDate);
+         }
+         moisDebut = MOIS_MIN;
+      }
+      char quitterProgramme;
+      bool saisieOk = false;
+      do {
+         cout << "Voulez-vous quitter le programme ? [o/n] :";
+         cin >> quitterProgramme;
+         if (quitterProgramme == 'o') {
+            programmeActif = false;
+            saisieOk = true;
+         } else if (quitterProgramme == 'n') {
+            programmeActif = true;
+            saisieOk = true;
+         }
+         if(!saisieOk){
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Saisie incorrecte" << endl;
+         }
+      } while (!saisieOk);
 
-        for (; anneeDebut <= anneeFin; anneeDebut++) {
-            if (anneeDebut != anneeFin) {
-                for (; moisDebut <= MOIS_MAX; moisDebut++) {
-                    afficherMois(moisDebut, anneeDebut);
-                }
-            } else {// l'annee est égale à la date de fin
-                for (; moisDebut <= moisFin; moisDebut++) {
-                    afficherMois(moisDebut, anneeDebut);
-                }
-            }
-            moisDebut = MOIS_MIN;
-        }
 
-        char quitterProgramme;
-        cout << "Voulez-vous quitter le programme ? [o/n] :";
-        cin >> quitterProgramme;
-        if (quitterProgramme == 'o') programmeActif = false;
-        if (quitterProgramme == 'n') programmeActif = true;
-    } while (programmeActif);
+   } while (programmeActif);
 
-    return EXIT_SUCCESS;
+   return EXIT_SUCCESS;
 }
