@@ -44,8 +44,10 @@ int main() {
                 if (moisDebut > moisFin) saisieDate = false;
             }
 
-            cout << moisDebut << "/" << anneeDebut << " - "
-                 << moisFin << "/" << anneeFin << endl;
+            if(!saisieDate) {
+                cout << "Veuillez entrer une date de debut < que la date de fin."
+                     << endl;
+            }
         } while (!saisieDate);
 
         char nouvelleSaisie;
