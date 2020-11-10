@@ -69,6 +69,20 @@ unsigned int nbJoursMois(unsigned int mois, unsigned int annee) {
 unsigned int calculDeltaJours(unsigned int moisDebut, unsigned int anneeDebut,
                               unsigned int moisFin, unsigned int anneeFin) {
 
+   // Contrôle la cohérence des dates et les inverse si necéssaire
+   if (anneeDebut > anneeFin || (anneeDebut == anneeFin && moisDebut < moisFin)) {
+      unsigned int moisTemp;
+      unsigned int anneeTemp;
+
+      anneeTemp = anneeFin;
+      anneeFin = anneeDebut;
+      anneeDebut = anneeTemp;
+
+      moisTemp = moisFin;
+      moisFin = moisDebut;
+      moisDebut = moisTemp;
+   }
+
    unsigned int deltaJours = 0;  // Nombre de jours entre la première date et la
    // deuxième
 
@@ -153,13 +167,14 @@ void afficherMois(unsigned int mois, unsigned int annee) {
          break;
    }
 
+   // affichage de l'entête
    cout << nomMois << " " << annee << endl;
    cout << endl;
    cout << " L  M  M  J  V  S  D" << endl;
 
    unsigned int jourDuMois = 1;
-   cout << setw(jourSurLaSemaine * 3 - 1); // décalage du premier jour sur le
-   // calendrier
+   cout << setw((int)(jourSurLaSemaine * 3 - 1)); // décalage du premier jour sur
+   // le calendrier
 
    while (jourDuMois <= nbJoursMois(mois, annee)) {
       cout << jourDuMois;

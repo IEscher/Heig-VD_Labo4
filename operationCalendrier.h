@@ -31,8 +31,7 @@ unsigned int calculDeltaJours(unsigned int moisDebut, unsigned int anneeDebut,
 
 /**
  * @brief       Affiche dans la console le mois de l'année en paramètre dans un
- *              format calendrier. La deuxième date doit être plus tard que la
- *              première.
+ *              format calendrier.
  * @param mois  le mois à afficher
  * @param annee l'année du mois désiré à afficher
  */
