@@ -5,18 +5,20 @@ Auteur(s)       : Crotti Pablo, Escher Ian, Rosat Cédric
 Date creation   : 07.11.2020
 
 Description     : Contrôle que les entrées utilisateur ne soient que des nombres
-                  entiers ainsi que leur inclusion dans les plages MAX et MIN.
+                  entiers non-signés ainsi que leur inclusion dans les plages
+                  MAX et MIN.
 
 Remarque(s)     : Boucle de contrôle inspirée du cours de PRG1 et modifiée pour
                   les besoins du programme.
+                  Une répétition de code à lieu lors du contrôle du type de la
+                  valeur entrée, cela est nécessaire car 2 valeurs différentes sont
+                  contrôlées.
 
 Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
-
 #include "controleSaisie.h"
 #include <iostream>
-
 using namespace std;
 
 bool controleSaisie(unsigned int VALEUR1_MIN, unsigned int VALEUR1_MAX,
@@ -45,8 +47,7 @@ bool controleSaisie(unsigned int VALEUR1_MIN, unsigned int VALEUR1_MAX,
                 limitesOK = true;
             }
         }
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Vide buffer
-        // Mise en page et affichage du message d'erreur si nécessaire
     }
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Vide buffer
     return (saisieOK && limitesOK);
 }

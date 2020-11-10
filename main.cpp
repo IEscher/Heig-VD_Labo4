@@ -7,11 +7,11 @@ Date creation   : 05.11.2020
 Description     : Ce programme demande à l'utilisateur de saisir deux dates et
                   affiche l'ensemble des pages calendrier correspondant à
                   l'intervalle entre les deux dates. Une fois l'affichage terminé,
-                  le programme demande à l'utilisateur si il veut afficher un autre
+                  le programme demande à l'utilisateur s'il veut afficher un autre
                   calendrier ou quitter le programme.
 
 Remarque(s)     : Les dates autorisées sont comprises entre janvier 1900 et
-                  décembre 2020. Les saisies de l'utilisateur sont contrôlées.
+                  décembre 2100. Les saisies de l'utilisateur sont contrôlées.
 
 Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
@@ -20,7 +20,6 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 #include <string>
 #include "controleSaisie.h"
 #include "operationCalendrier.h"
-
 using namespace std;
 
 int main() {
@@ -32,27 +31,40 @@ int main() {
         bool saisieDate;
         unsigned int moisDebut, anneeDebut, moisFin, anneeFin;
         do {
-            cout << "Veuillez entrer la date de debut [mm aaaa] :";
-            controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX, moisDebut,
-                           anneeDebut);
-            cout << "Veuillez entrer la date de fin [mm aaaa] :";
-            controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX, moisFin,
-                           anneeFin);
+            bool valeur1_OK;
+            do {
+                cout << "Veuillez entrer la date de debut [mm aaaa] :";
+                valeur1_OK = controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX,
+                                            moisDebut, anneeDebut);
+                if (!valeur1_OK) {
+                    cout << "Date non valide. Veuillez SVP recommencer." << endl;
+                }
+            } while (!valeur1_OK);
 
-         // Contrôle la cohérence des dates
-         if (anneeDebut > anneeFin) {
-            saisieDate = false;
-         } else if (anneeDebut == anneeFin) {
-            saisieDate = (moisDebut <= moisFin);
-         } else {
-            saisieDate = true;
-         }
+            bool valeur2_OK;
+            do {
+                cout << "Veuillez entrer la date de fin [mm aaaa] :";
+                valeur2_OK = controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX,
+                                            moisFin, anneeFin);
+                if (!valeur2_OK) {
+                    cout << "Date non valide. Veuillez SVP recommencer." << endl;
+                }
+            } while (!valeur2_OK);
 
-         if (!saisieDate) {
-            cout << "Veuillez entrer une date de debut < que la date de fin."
-                 << endl;
-         }
-      } while (!saisieDate);
+            // Contrôle la cohérence des dates
+            if (anneeDebut > anneeFin) {
+                saisieDate = false;
+            } else if (anneeDebut == anneeFin) {
+                saisieDate = (moisDebut <= moisFin);
+            } else {
+                saisieDate = true;
+            }
+
+            if (!saisieDate) {
+                cout << "Veuillez entrer une date de debut < que la date de fin."
+                     << endl;
+            }
+        } while (!saisieDate);
 
       for (; anneeDebut <= anneeFin; anneeDebut++) {
          if (anneeDebut != anneeFin) {
@@ -84,8 +96,6 @@ int main() {
             cout << "Saisie incorrecte" << endl;
          }
       } while (!saisieOk);
-
-
    } while (programmeActif);
 
    return EXIT_SUCCESS;
