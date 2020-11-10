@@ -11,9 +11,10 @@ Remarque(s)     : <à compléter>
 Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
-#include "controleSaisie.h"
 #include <iostream>
 #include <string>
+#include "controleSaisie.h"
+#include "operationCalendrier.h"
 
 using namespace std;
 
@@ -55,5 +56,4 @@ int main() {
     } while (!programmeActif);
 
     return EXIT_SUCCESS;
-}
 }
