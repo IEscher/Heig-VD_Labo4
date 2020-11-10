@@ -26,4 +26,5 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 bool controleSaisie(unsigned int VALEUR1_MIN, unsigned int VALEUR1_MAX,
                     unsigned int VALEUR2_MIN, unsigned int VALEUR2_MAX,
                     unsigned int& valeur1, unsigned int& valeur2);
+
 #endif // CONTROLESAISIE_H

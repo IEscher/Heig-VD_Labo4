@@ -33,25 +33,25 @@ int main() {
       unsigned int moisDebut, anneeDebut, moisFin, anneeFin;
 
       do { // Boucle de contrôle de saisie des dates
-         bool valeur1_OK;
+         bool valeur1_Ok;
          do { // Boucle de contrôle du format et de la valeur de la première date
             cout << "Veuillez entrer la date de debut [mm aaaa] :";
-            valeur1_OK = controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX,
+            valeur1_Ok = controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX,
                                         moisDebut, anneeDebut);
-            if (!valeur1_OK) {
+            if (!valeur1_Ok) {
                cout << "Date non valide. Veuillez SVP recommencer." << endl;
             }
-         } while (!valeur1_OK);
+         } while (!valeur1_Ok);
 
-         bool valeur2_OK;
+         bool valeur2_Ok;
          do { // Boucle de contrôle du format et de la valeur de la deuxième date
             cout << "Veuillez entrer la date de fin [mm aaaa] :";
-            valeur2_OK = controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX,
+            valeur2_Ok = controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX,
                                         moisFin, anneeFin);
-            if (!valeur2_OK) {
+            if (!valeur2_Ok) {
                cout << "Date non valide. Veuillez SVP recommencer." << endl;
             }
-         } while (!valeur2_OK);
+         } while (!valeur2_Ok);
 
          // Contrôle la cohérence des dates
          if (anneeDebut > anneeFin) {
@@ -98,6 +98,7 @@ int main() {
          } else if (quitterProgramme == 'n') {
             programmeActif = true;
             saisieOk = true;
+
          }
          if (!saisieOk) {
             cin.clear();

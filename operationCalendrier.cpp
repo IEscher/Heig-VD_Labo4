@@ -20,6 +20,7 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 #include <iomanip>
 #include <cassert>
 #include "operationCalendrier.h"
+
 using namespace std;
 
 bool testBissextile(unsigned int annee) {
@@ -65,6 +66,7 @@ unsigned int nbJoursMois(unsigned int mois, unsigned int annee) {
          }
       default:
          assert(mois > 0 && mois < 13);
+         return 0;
    }
 }
 
