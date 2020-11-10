@@ -37,4 +37,4 @@ unsigned int calculDeltaJours(unsigned int moisDebut, unsigned int anneeDebut,
  */
 void afficherMois(unsigned int mois, unsigned int annee);
 
-#endif //OPERATIONCALENDRIER_H
+#endif // OPERATIONCALENDRIER_H
