@@ -34,7 +34,7 @@ int main() {
 
       do { // Boucle de contrôle de saisie des dates
          bool valeur1_OK;
-         do { // Boucle de contrôle du type et de la valeur de la première date
+         do { // Boucle de contrôle du format et de la valeur de la première date
             cout << "Veuillez entrer la date de debut [mm aaaa] :";
             valeur1_OK = controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX,
                                         moisDebut, anneeDebut);
@@ -44,7 +44,7 @@ int main() {
          } while (!valeur1_OK);
 
          bool valeur2_OK;
-         do { // Boucle de contrôle du type et de la valeur de la deuxième date
+         do { // Boucle de contrôle du format et de la valeur de la deuxième date
             cout << "Veuillez entrer la date de fin [mm aaaa] :";
             valeur2_OK = controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX,
                                         moisFin, anneeFin);
@@ -77,7 +77,7 @@ int main() {
                // d'une année
                afficherMois(moisDebut, anneeDebut);
             }
-         } else {// l'année est égale à la date de fin
+         } else {// L'année est égale à la date de fin
             for (; moisDebut <= moisFin; moisDebut++) {
                afficherMois(moisDebut, anneeDebut);
             }
@@ -86,7 +86,7 @@ int main() {
       }
 
 
-      // Demande à l'utilisateur si recommencer
+      // Demande à l'utilisateur s'il souhaite recommencer
       char quitterProgramme;
       bool saisieOk = false;
       do {
