@@ -20,64 +20,73 @@ Compilateur     : Mingw-w64 g++ 8.1.0
 #include <string>
 #include "controleSaisie.h"
 #include "operationCalendrier.h"
+
 using namespace std;
 
 int main() {
    const unsigned int MOIS_MIN = 1, MOIS_MAX = 12;
    const unsigned int ANNEE_MIN = 1900, ANNEE_MAX = 2100;
 
-    bool programmeActif;
-    do {
-        bool saisieDate;
-        unsigned int moisDebut, anneeDebut, moisFin, anneeFin;
-        do {
-            bool valeur1_OK;
-            do {
-                cout << "Veuillez entrer la date de debut [mm aaaa] :";
-                valeur1_OK = controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX,
-                                            moisDebut, anneeDebut);
-                if (!valeur1_OK) {
-                    cout << "Date non valide. Veuillez SVP recommencer." << endl;
-                }
-            } while (!valeur1_OK);
+   bool programmeActif;
+   do { // Boucle de répétition du programme
+      bool saisieDate;
+      unsigned int moisDebut, anneeDebut, moisFin, anneeFin;
 
-            bool valeur2_OK;
-            do {
-                cout << "Veuillez entrer la date de fin [mm aaaa] :";
-                valeur2_OK = controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX,
-                                            moisFin, anneeFin);
-                if (!valeur2_OK) {
-                    cout << "Date non valide. Veuillez SVP recommencer." << endl;
-                }
-            } while (!valeur2_OK);
-
-            // Contrôle la cohérence des dates
-            if (anneeDebut > anneeFin) {
-                saisieDate = false;
-            } else if (anneeDebut == anneeFin) {
-                saisieDate = (moisDebut <= moisFin);
-            } else {
-                saisieDate = true;
+      do { // Boucle de contrôle de saisie des dates
+         bool valeur1_OK;
+         do { // Boucle de contrôle du type et de la valeur de la première date
+            cout << "Veuillez entrer la date de debut [mm aaaa] :";
+            valeur1_OK = controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX,
+                                        moisDebut, anneeDebut);
+            if (!valeur1_OK) {
+               cout << "Date non valide. Veuillez SVP recommencer." << endl;
             }
+         } while (!valeur1_OK);
 
-            if (!saisieDate) {
-                cout << "Veuillez entrer une date de debut < que la date de fin."
-                     << endl;
+         bool valeur2_OK;
+         do { // Boucle de contrôle du type et de la valeur de la deuxième date
+            cout << "Veuillez entrer la date de fin [mm aaaa] :";
+            valeur2_OK = controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX,
+                                        moisFin, anneeFin);
+            if (!valeur2_OK) {
+               cout << "Date non valide. Veuillez SVP recommencer." << endl;
             }
-        } while (!saisieDate);
+         } while (!valeur2_OK);
 
+         // Contrôle la cohérence des dates
+         if (anneeDebut > anneeFin) {
+            saisieDate = false;
+         } else if (anneeDebut == anneeFin) {
+            saisieDate = (moisDebut <= moisFin);
+         } else {
+            saisieDate = true;
+         }
+
+         if (!saisieDate) {
+            cout << "Veuillez entrer une date de debut < que la date de fin."
+                 << endl;
+         }
+      } while (!saisieDate); // Recommencer tant que les dates ne sont pas dans
+      // le bon ordre
+
+
+      // Affichage du calendrier
       for (; anneeDebut <= anneeFin; anneeDebut++) {
          if (anneeDebut != anneeFin) {
-            for (; moisDebut <= MOIS_MAX; moisDebut++) {
+            for (; moisDebut <= MOIS_MAX; moisDebut++) { // Affiche tous les mois
+               // d'une année
                afficherMois(moisDebut, anneeDebut);
             }
-         } else {// l'annee est égale à la date de fin
+         } else {// l'année est égale à la date de fin
             for (; moisDebut <= moisFin; moisDebut++) {
                afficherMois(moisDebut, anneeDebut);
             }
          }
-         moisDebut = MOIS_MIN;
+         moisDebut = MOIS_MIN; // Reset du compteur des mois
       }
+
+
+      // Demande à l'utilisateur si recommencer
       char quitterProgramme;
       bool saisieOk = false;
       do {
