@@ -1,3 +1,19 @@
+/*
+-----------------------------------------------------------------------------------
+Nom du fichier  : operationCalendrier.cpp
+Auteur(s)       : Ian Escher, Crotti Pablo, Rosat Cédric
+Date creation   : 05.11.2020
+
+Description     : Contient une fonction permettant de calculer si une année est
+                  bissextille ou non, une fonction retournant le nombre de jours
+                  contenus dans chaque mois, une fonction calculant le nombre de
+                  jours entre deux dates et une fonction permettant d'afficher le
+                  calendrier mis en forme.
+
+Compilateur     : Mingw-w64 g++ 8.1.0
+-----------------------------------------------------------------------------------
+*/
+
 #ifndef OPERATIONCALENDRIER_H
 #define OPERATIONCALENDRIER_H
 
