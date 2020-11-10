@@ -20,14 +20,14 @@ using namespace std;
 
 /**
  *
- * @param VALEUR1_MIN
- * @param VALEUR1_MAX
- * @param VALEUR2_MIN
- * @param VALEUR2_MAX
- * @param valeur1
- * @param valeur2
- * @param messageEntree
- * @param messageErreur
+ * @param VALEUR1_MIN       valeur minimale de la première entrée
+ * @param VALEUR1_MAX       valeur maximale de la première entrée
+ * @param VALEUR2_MIN       valeur minimale de la deuxième entrée
+ * @param VALEUR2_MAX       valeur maximale de la deuxième entrée
+ * @param valeur1           valeur de la première entrée
+ * @param valeur2           valeur de la deuxième entrée
+ * @param messageEntree     message lors de l'entrée
+ * @param messageErreur     message d'erreur si l'entrée est fausse
  */
 void controleSaisie(unsigned int VALEUR1_MIN, unsigned int VALEUR1_MAX,
                     unsigned int VALEUR2_MIN, unsigned int VALEUR2_MAX,
