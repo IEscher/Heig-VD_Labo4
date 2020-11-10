@@ -13,6 +13,8 @@ Remarque(s)     : Boucle de contrôle inspirée du cours de PRG1 et modifiée po
                   Une répétition de code à lieu lors du contrôle du type de la
                   valeur entrée, cela est nécessaire car 2 valeurs différentes sont
                   contrôlées.
+                  Une saisie d'un int suivi d'un char comme "1a" ne peut pas être
+                  détectée comme fausse avec les connaissances actuelles.
 
 Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
