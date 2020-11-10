@@ -4,9 +4,8 @@ Nom du fichier  : controleSaisie.h
 Auteur(s)       : Crotti Pablo, Escher Ian, Rosat Cédric
 Date creation   : 07.11.2020
 
-Description     : Ficher header de la fonction de contrôle des dates saisies.
-
-Remarque(s)     : <à compléter>
+Description     : Contrôle que les entrées utilisateur ne soient que des nombres
+                  entiers ainsi que leur inclusion dans les plages MAX et MIN.
 
 Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
