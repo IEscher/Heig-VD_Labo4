@@ -10,7 +10,8 @@ Description     : Contient une fonction permettant de calculer si une année est
                   jours entre deux dates et une fonction permettant d'afficher le
                   calendrier mis en forme.
 
-Remarque(s)     :
+Remarque(s)     : La date de référence dans la fonction afficherMois est le
+                  premier jour du mois de l'année écrit dans les constantes.
 
 Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
@@ -119,7 +120,7 @@ unsigned int calculDeltaJours(unsigned int moisDebut, unsigned int anneeDebut,
 }
 
 void afficherMois(unsigned int mois, unsigned int annee) {
-   // La date de référence ci-dessous doit correspondre obligatoirement à Lundi.
+   // La date de référence ci-dessous doit correspondre obligatoirement à lundi.
    const unsigned int MOIS_DE_REFERENCE = 1;
    const unsigned int ANNEE_DE_REFERENCE = 1900;
 
@@ -176,7 +177,7 @@ void afficherMois(unsigned int mois, unsigned int annee) {
    cout << " L  M  M  J  V  S  D" << endl;
 
    unsigned int jourDuMois = 1;
-   cout << setw((int)(jourSurLaSemaine * 3 - 1)); // Décalage du premier jour sur
+   cout << setw((int) (jourSurLaSemaine * 3 - 1)); // Décalage du premier jour sur
    // le calendrier
 
    // Affichage de tous les jours du mois
