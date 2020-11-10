@@ -13,7 +13,7 @@ bool testBissextile(unsigned int annee);
 /**
  *
  * @param mois
- * @param annee
+ * @param annee permet de retourner le bon nombre de jours pour le mois de fevrier
  * @return
  */
 unsigned int nbJoursMois(unsigned int mois, unsigned int annee);
