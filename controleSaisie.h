@@ -10,8 +10,6 @@ Description     : Contrôle que les entrées utilisateur ne soient que des nombr
 Compilateur     : Mingw-w64 g++ 8.1.0
 -----------------------------------------------------------------------------------
 */
-#include <string>
-
 using namespace std;
 
 #ifndef CONTROLESAISIE_H
@@ -28,9 +26,8 @@ using namespace std;
  * @param messageEntree     message lors de l'entrée
  * @param messageErreur     message d'erreur si l'entrée est fausse
  */
-void controleSaisie(unsigned int VALEUR1_MIN, unsigned int VALEUR1_MAX,
+bool controleSaisie(unsigned int VALEUR1_MIN, unsigned int VALEUR1_MAX,
                     unsigned int VALEUR2_MIN, unsigned int VALEUR2_MAX,
-                    unsigned int *valeur1, unsigned int *valeur2,
-                    string messageEntree, string messageErreur);
+                    unsigned int& valeur1, unsigned int& valeur2);
 
 #endif // CONTROLESAISIE_H

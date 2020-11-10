@@ -27,18 +27,17 @@ int main() {
    const unsigned int MOIS_MIN = 1, MOIS_MAX = 12;
    const unsigned int ANNEE_MIN = 1900, ANNEE_MAX = 2100;
 
-   bool programmeActif;
-   do {
-      bool saisieDate;
-      unsigned int moisDebut, anneeDebut, moisFin, anneeFin;
-      do {
-         string messageErreur = "Date non valide. Veuillez SVP recommencer.";
-         string messageEntree = "Veuillez entrer la date de debut [mm aaaa] :";
-         controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX, &moisDebut,
-                        &anneeDebut, messageEntree, messageErreur);
-         messageEntree = "Veuillez entrer la date de fin [mm aaaa] :";
-         controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX, &moisFin,
-                        &anneeFin, messageEntree, messageErreur);
+    bool programmeActif;
+    do {
+        bool saisieDate;
+        unsigned int moisDebut, anneeDebut, moisFin, anneeFin;
+        do {
+            cout << "Veuillez entrer la date de debut [mm aaaa] :";
+            controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX, moisDebut,
+                           anneeDebut);
+            cout << "Veuillez entrer la date de fin [mm aaaa] :";
+            controleSaisie(MOIS_MIN, MOIS_MAX, ANNEE_MIN, ANNEE_MAX, moisFin,
+                           anneeFin);
 
          // Contrôle la cohérence des dates
          if (anneeDebut > anneeFin) {
