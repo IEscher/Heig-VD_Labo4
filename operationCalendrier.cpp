@@ -1,3 +1,19 @@
+/*
+-----------------------------------------------------------------------------------
+Nom du fichier  : operationCalendrier.cpp
+Auteur(s)       : Ian Escher, Crotti Pablo, Rosat Cédric
+Date creation   : 05.11.2020
+
+Description     : Contient une fonction permettant de calculer si une année est
+                  bissextille ou non, une fonction retournant le nombre de jours
+                  que contient chaque mois, une fonction calculant le nombre de
+                  jours entre deux dates et une fonction pour afficher le calendrier.
+
+Remarque(s)     :
+
+Compilateur     : Mingw-w64 g++ 8.1.0
+-----------------------------------------------------------------------------------
+*/
 #include <iostream>
 #include <iomanip>
 #include "operationCalendrier.h"
@@ -19,6 +35,7 @@ unsigned int nbJoursMois(unsigned int mois, unsigned int annee) {
    const unsigned int MOIS_BISSEXTILE = 29;
    const unsigned int MOIS_NON_BISSEXTILE = 28;
 
+   // Janvier = 1, Fevrier = 2, etc...
    enum numMois {
       JANVIER = 1, FEVRIER, MARS, AVRIL, MAI, JUIN, JUILLET, AOUT, SEPTEMBRE,
       OCTOBRE, NOVEMBRE, DECEMBRE
@@ -41,7 +58,7 @@ unsigned int nbJoursMois(unsigned int mois, unsigned int annee) {
       case numMois::FEVRIER:
          if (testBissextile(annee)) {
             return MOIS_BISSEXTILE;
-         } else { // Si il ne s'agit pas d'une annee bissextile
+         } else { // Si il ne s'agit pas d'une année bissextile
             return MOIS_NON_BISSEXTILE;
          }
       default:
