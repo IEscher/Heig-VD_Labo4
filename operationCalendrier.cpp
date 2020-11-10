@@ -173,5 +173,5 @@ void afficherMois(unsigned int mois, unsigned int annee) {
          cout << setw(3);
       }
    }
-   cout << endl;
+   cout << endl << endl;
 }
