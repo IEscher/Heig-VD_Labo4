@@ -1,20 +1,18 @@
 #ifndef OPERATIONCALENDRIER_H
 #define OPERATIONCALENDRIER_H
 
-// Retourne vrai si l'année en paramètre est bissextile, sinon retourne faux.
 /**
- * @brief Test si l'année en paramètre est bissextile
- * @param annee
- * @return true si l'année en paramètre est bissextile, sinon false
+ * @brief           Test si l'année en paramètre est bissextile
+ * @param annee     l'année à tester
+ * @return          true si l'année en paramètre est bissextile, sinon false
  */
 bool testBissextile(unsigned int annee);
 
-// Retourne le nombre de jours dans un mois donné d'une année donnée.
 /**
- *
- * @param mois
- * @param annee permet de retourner le bon nombre de jours pour le mois de fevrier
- * @return
+ * @brief           Retourne le nombre de jours que contient un mois donné
+ * @param mois      le mois à tester
+ * @param annee     l'année pour tester le nombre de jours du mois de février
+ * @return          le nombre de jours d'un mois donné
  */
 unsigned int nbJoursMois(unsigned int mois, unsigned int annee);
 
