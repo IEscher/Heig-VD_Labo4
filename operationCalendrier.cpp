@@ -126,7 +126,7 @@ void afficherMois(unsigned int mois, unsigned int annee) {
          nomMois = "Avril";
          break;
       case 5:
-         nomMois = "May";
+         nomMois = "Mai";
          break;
       case 6:
          nomMois = "Juin";
